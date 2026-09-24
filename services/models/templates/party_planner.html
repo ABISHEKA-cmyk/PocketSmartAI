@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Party Budget Planner - PocketSmart AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🎉 Party Budget Planner</h1>
+
+        <p>
+            Plan your party smartly according to your budget
+            with PocketSmart AI.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>✨ Tell us about your event</h2>
+
+        <form method="post" action="/generate-party">
+
+            <label>💰 Total Budget:</label>
+
+            <br>
+
+            <input
+                type="number"
+                name="budget"
+                placeholder="Enter your budget"
+                min="1"
+                required
+            >
+
+            <br><br>
+
+
+            <label>👥 Number of Guests:</label>
+
+            <br>
+
+            <input
+                type="number"
+                name="guests"
+                placeholder="Example: 50"
+                min="1"
+                required
+            >
+
+            <br><br>
+
+
+            <label>🎉 Event Type:</label>
+
+            <br>
+
+            <select name="event_type" required>
+
+                <option value="Birthday Party">
+                    Birthday Party
+                </option>
+
+                <option value="Wedding">
+                    Wedding
+                </option>
+
+                <option value="Engagement">
+                    Engagement
+                </option>
+
+                <option value="Anniversary">
+                    Anniversary
+                </option>
+
+                <option value="College Event">
+                    College Event
+                </option>
+
+                <option value="Baby Shower">
+                    Baby Shower
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>📍 Venue:</label>
+
+            <br>
+
+            <select name="venue" required>
+
+                <option value="Home">
+                    Home
+                </option>
+
+                <option value="Hotel">
+                    Hotel
+                </option>
+
+                <option value="Restaurant">
+                    Restaurant
+                </option>
+
+                <option value="Community Hall">
+                    Community Hall
+                </option>
+
+                <option value="Outdoor">
+                    Outdoor
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <button type="submit">
+                ✨ Generate Party Plan
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <a href="/">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jewelry Recommendation - PocketSmart AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>💎 Jewelry Recommendation Planner</h1>
+
+        <p>
+            Find jewelry that matches your budget, occasion,
+            style and outfit with PocketSmart AI.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>✨ Tell us what you need</h2>
+
+        <form
+            method="post"
+            action="/generate-jewelry"
+            enctype="multipart/form-data"
+        >
+
+            <label>💰 Your Budget:</label>
+
+            <br>
+
+            <input
+                type="number"
+                name="budget"
+                placeholder="Enter your budget"
+                min="1"
+                required
+            >
+
+            <br><br>
+
+
+            <label>🎉 Occasion:</label>
+
+            <br>
+
+            <select name="occasion" required>
+
+                <option value="Wedding">
+                    Wedding
+                </option>
+
+                <option value="Engagement">
+                    Engagement
+                </option>
+
+                <option value="Birthday">
+                    Birthday
+                </option>
+
+                <option value="Party">
+                    Party
+                </option>
+
+                <option value="College Event">
+                    College Event
+                </option>
+
+                <option value="Festival">
+                    Festival
+                </option>
+
+                <option value="Casual">
+                    Casual
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>✨ Preferred Style:</label>
+
+            <br>
+
+            <select name="style" required>
+
+                <option value="Traditional">
+                    Traditional
+                </option>
+
+                <option value="Modern">
+                    Modern
+                </option>
+
+                <option value="Minimalist">
+                    Minimalist
+                </option>
+
+                <option value="Elegant">
+                    Elegant
+                </option>
+
+                <option value="Trendy">
+                    Trendy
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>👗 Outfit Colour:</label>
+
+            <br>
+
+            <input
+                type="text"
+                name="outfit_color"
+                placeholder="Example: Red, Blue, Black"
+                required
+            >
+
+            <br><br>
+
+
+            <label>📸 Upload Outfit Image:</label>
+
+            <br>
+
+            <input
+                type="file"
+                name="outfit_image"
+                accept="image/*"
+            >
+
+            <br><br>
+
+            <small>
+                Optional: Upload your outfit image for AI visual analysis.
+            </small>
+
+            <br><br>
+
+
+            <button type="submit">
+                ✨ Get Jewelry Recommendations
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <a href="/">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

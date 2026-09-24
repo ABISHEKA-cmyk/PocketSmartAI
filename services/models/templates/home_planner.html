@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Interior Planner - PocketSmart AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🏠 Home Interior Planner</h1>
+
+        <p>
+            Plan your home interior according to your budget
+            with PocketSmart AI.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>✨ Tell us about your room</h2>
+
+        <form method="post" action="/generate-home">
+
+            <label>💰 Your Budget:</label>
+
+            <br>
+
+            <input
+                type="number"
+                name="budget"
+                placeholder="Enter your budget"
+                min="1"
+                required
+            >
+
+            <br><br>
+
+
+            <label>🛋️ Select Room:</label>
+
+            <br>
+
+            <select name="room" required>
+
+                <option value="Living Room">
+                    Living Room
+                </option>
+
+                <option value="Bedroom">
+                    Bedroom
+                </option>
+
+                <option value="Kitchen">
+                    Kitchen
+                </option>
+
+                <option value="Dining Room">
+                    Dining Room
+                </option>
+
+                <option value="Study Room">
+                    Study Room
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>📦 Number of Items:</label>
+
+            <br>
+
+            <input
+                type="number"
+                name="items"
+                placeholder="Example: 5"
+                min="1"
+                required
+            >
+
+            <br><br>
+
+
+            <label>🎨 Preferred Style:</label>
+
+            <br>
+
+            <select name="style" required>
+
+                <option value="Modern">
+                    Modern
+                </option>
+
+                <option value="Minimalist">
+                    Minimalist
+                </option>
+
+                <option value="Traditional">
+                    Traditional
+                </option>
+
+                <option value="Luxury">
+                    Luxury
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <button type="submit">
+                ✨ Generate Recommendations
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <a href="/">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

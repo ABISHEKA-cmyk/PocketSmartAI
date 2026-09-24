@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recommendation History - PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>📋 Recommendation History</h1>
+
+        <p>
+            Your previous PocketSmart AI recommendations.
+        </p>
+
+    </div>
+
+
+    {% if history %}
+
+        {% for item in history %}
+
+        <div class="card">
+
+            <h2>
+
+                {% if item[0] == "Home Interior" %}
+
+                    🏠 Home Interior
+
+                {% elif item[0] == "Party Planner" %}
+
+                    🎉 Party Planner
+
+                {% else %}
+
+                    💎 Jewelry Recommendation
+
+                {% endif %}
+
+            </h2>
+
+
+            <p>
+
+                <strong>📌 Details:</strong>
+
+                {{ item[1] }}
+
+            </p>
+
+
+            <hr>
+
+
+            <h3>🤖 AI Recommendation</h3>
+
+
+            <div class="result">
+
+                {{ item[2] }}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+    {% else %}
+
+        <div class="card">
+
+            <h2>📭 No History Yet</h2>
+
+            <p>
+                You have not generated any recommendations yet.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <div class="card">
+
+        <a href="/dashboard">
+
+            <button>
+                ← Back to Dashboard
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

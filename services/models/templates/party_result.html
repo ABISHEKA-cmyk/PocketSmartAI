@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Party Recommendations - PocketSmart AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🎉 PocketSmart AI</h1>
+
+        <p>
+            Your Smart Party Budget Recommendations
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>✨ Your Event</h2>
+
+        <p>💰 <strong>Budget:</strong> ₹{{ budget }}</p>
+
+        <p>👥 <strong>Guests:</strong> {{ guests }}</p>
+
+        <p>🎉 <strong>Event:</strong> {{ event_type }}</p>
+
+        <p>📍 <strong>Venue:</strong> {{ venue }}</p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>🤖 AI Party Plan</h2>
+
+        <div class="result">
+            {{ recommendations }}
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <a href="/party-planner">
+            ← Plan Again
+        </a>
+
+        <br><br>
+
+        <a href="/">
+            🏠 Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

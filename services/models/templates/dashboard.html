@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - PocketSmart AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- Welcome -->
+
+    <div class="card">
+
+        <h1>🤖 PocketSmart AI</h1>
+
+        <h2>Welcome, {{ name }}! 👋</h2>
+
+        <p>
+            Your Smart Budget & Recommendation Assistant
+        </p>
+
+        <p>
+            📧 {{ email }}
+        </p>
+
+    </div>
+
+
+    <!-- Planner Section -->
+
+    <div class="card">
+
+        <h2>✨ Choose Your Planner</h2>
+
+        <p>
+            Select a planner and get AI-powered
+            recommendations according to your budget.
+        </p>
+
+        <br>
+
+
+        <a href="/home-planner">
+
+            <button>
+                🏠 Home Interior Planner
+            </button>
+
+        </a>
+
+        <br>
+        <br>
+
+
+        <a href="/party-planner">
+
+            <button>
+                🎉 Party Budget Planner
+            </button>
+
+        </a>
+
+        <br>
+        <br>
+
+
+        <a href="/jewelry-planner">
+
+            <button>
+                💎 Jewelry Recommendation
+            </button>
+
+        </a>
+
+    </div>
+
+
+    <!-- Features -->
+
+    <div class="card">
+
+        <h2>🌟 PocketSmart AI Features</h2>
+
+        <p>
+            💰 Budget-based planning
+        </p>
+
+        <p>
+            🤖 Gemini AI recommendations
+        </p>
+
+        <p>
+            🏠 Home interior planning
+        </p>
+
+        <p>
+            🎉 Party budget planning
+        </p>
+
+        <p>
+            💎 Personalized jewelry recommendations
+        </p>
+
+        <p>
+            📸 Outfit image analysis
+        </p>
+
+    </div>
+
+
+    <!-- History -->
+
+    <div class="card">
+
+        <h2>📋 Recommendation History</h2>
+
+        <p>
+            View your previous AI recommendations.
+        </p>
+
+        <a href="/history">
+
+            <button>
+                📋 View History
+            </button>
+
+        </a>
+
+    </div>
+
+
+    <!-- Logout -->
+
+    <div class="card">
+
+        <a href="/logout">
+
+            <button>
+                🚪 Logout
+            </button>
+
+        </a>
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
