@@ -71,6 +71,47 @@ client = genai.Client(
     api_key=api_key
 )
 
+# Current stable Flash-Lite model
+GEMINI_MODEL = "gemini-3.5-flash-lite"
+
+
+# =========================
+# GEMINI HELPER
+# =========================
+
+def generate_gemini_response(contents, attempts=4):
+
+    for attempt in range(attempts):
+
+        try:
+
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=contents
+            )
+
+            return response
+
+        except Exception as error:
+
+            print(
+                f"Gemini attempt {attempt + 1} failed: {error}"
+            )
+
+            if attempt < attempts - 1:
+
+                wait_time = 2 ** attempt
+
+                print(
+                    f"Retrying Gemini in {wait_time} seconds..."
+                )
+
+                time.sleep(wait_time)
+
+            else:
+
+                raise error
+
 
 # =========================
 # TEMPLATES
@@ -201,9 +242,7 @@ def home(request: Request):
 @app.get("/test-gemini")
 def test_gemini():
 
-    response = client.models.generate_content(
-        model="gemini-3.6-flash",
-        contents=
+    response = generate_gemini_response(
         "Say hello to PocketSmart AI in one short sentence."
     )
 
@@ -372,6 +411,8 @@ def logout():
     )
 
     return response
+
+
 # =========================
 # FORGOT PASSWORD PAGE
 # =========================
@@ -446,6 +487,7 @@ def forgot_password(
         url="/login",
         status_code=303
     )
+
 
 # =========================
 # DASHBOARD
@@ -578,20 +620,11 @@ def generate_home(
     style: str = Form(...)
 ):
 
-    # -------------------------
-    # PRODUCT DATA
-    # -------------------------
-
     products = get_home_products(
         room=room,
         style=style,
         budget=budget
     )
-
-
-    # -------------------------
-    # PRODUCT SUMMARY
-    # -------------------------
 
     product_text = ""
 
@@ -603,17 +636,11 @@ def generate_home(
             f" | {product['source']}"
         )
 
-
     if not product_text:
 
         product_text = (
             "\nNo affordable products found."
         )
-
-
-    # -------------------------
-    # GEMINI PROMPT
-    # -------------------------
 
     prompt = f"""
 You are PocketSmart AI.
@@ -649,22 +676,24 @@ Clearly explain that prices are estimated
 and may vary.
 """
 
+    try:
 
-    # -------------------------
-    # GEMINI
-    # -------------------------
+        response = generate_gemini_response(
+            prompt
+        )
 
-    response = client.models.generate_content(
-        model="gemini-3.6-flash",
-        contents=prompt
-    )
+        recommendation = response.text
 
-    recommendation = response.text
+    except Exception as error:
 
+        print(
+            f"Home Gemini error: {error}"
+        )
 
-    # -------------------------
-    # DETAILS
-    # -------------------------
+        recommendation = (
+            "⚠️ Gemini AI is temporarily busy. "
+            "Please try again in a few moments."
+        )
 
     details = (
         f"Budget: ₹{budget} | "
@@ -673,22 +702,12 @@ and may vary.
         f"Style: {style}"
     )
 
-
-    # -------------------------
-    # HISTORY
-    # -------------------------
-
     save_history(
         request,
         "Home Interior",
         details,
         recommendation
     )
-
-
-    # -------------------------
-    # RESULT PAGE
-    # -------------------------
 
     return templates.TemplateResponse(
         request=request,
@@ -754,40 +773,24 @@ Include estimated amounts and money-saving suggestions.
 Keep the total within the budget.
 """
 
-    response = None
+    try:
 
-    for attempt in range(3):
+        response = generate_gemini_response(
+            prompt
+        )
 
-        try:
+        recommendation = response.text
 
-            response = client.models.generate_content(
-                model="gemini-3.6-flash",
-                contents=prompt
-            )
+    except Exception as error:
 
-            break
+        print(
+            f"Party Gemini error: {error}"
+        )
 
-        except Exception:
-
-            if attempt < 2:
-                time.sleep(5)
-
-            else:
-
-                return templates.TemplateResponse(
-                    request=request,
-                    name="party_result.html",
-                    context={
-                        "budget": budget,
-                        "guests": guests,
-                        "event_type": event_type,
-                        "venue": venue,
-                        "recommendations":
-                        "⚠️ Gemini AI is temporarily busy. Please try again."
-                    }
-                )
-
-    recommendation = response.text
+        recommendation = (
+            "⚠️ Gemini AI is temporarily busy. "
+            "Please try again in a few moments."
+        )
 
     details = (
         f"Budget: ₹{budget} | "
@@ -887,40 +890,24 @@ Do not identify the person in the image.
             )
         )
 
-    response = None
+    try:
 
-    for attempt in range(3):
+        response = generate_gemini_response(
+            contents
+        )
 
-        try:
+        recommendation = response.text
 
-            response = client.models.generate_content(
-                model="gemini-3.6-flash",
-                contents=contents
-            )
+    except Exception as error:
 
-            break
+        print(
+            f"Jewelry Gemini error: {error}"
+        )
 
-        except Exception:
-
-            if attempt < 2:
-                time.sleep(5)
-
-            else:
-
-                return templates.TemplateResponse(
-                    request=request,
-                    name="jewelry_result.html",
-                    context={
-                        "budget": budget,
-                        "occasion": occasion,
-                        "style": style,
-                        "outfit_color": outfit_color,
-                        "recommendations":
-                        "⚠️ Gemini AI is temporarily busy. Please try again."
-                    }
-                )
-
-    recommendation = response.text
+        recommendation = (
+            "⚠️ Gemini AI is temporarily busy. "
+            "Please try again in a few moments."
+        )
 
     details = (
         f"Budget: ₹{budget} | "
